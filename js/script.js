@@ -77,3 +77,4 @@ const getProductsList = async() => {
 };
 
 getProductsList();
+
