@@ -52,3 +52,4 @@ const getProductsList = async() => {
 };
 
 getProductsList();
+
