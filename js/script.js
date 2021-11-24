@@ -94,4 +94,6 @@ let productList=[];
 
 getProductsList();
 
-// cartBtn.addEventListener("click", )
+// // cartBtn.addEventListener("click", () =>{
+//   console.log(cartList);
+// });
