@@ -22,6 +22,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 //
+
+function setCartProductsNum() {
+  cartProductsNum.textContent = `Numero prodotti: ${cartList.length}`;
+}
+
 function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   const product = document.createElement("div");
   product.className = "product";
@@ -32,14 +37,14 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   parent.appendChild(product);
 
   product.addEventListener("click", (e) => {
-    // console.log(parseInt(e.currentTarget));
-    // productList.find((product) => parseInt(e.currenttarget.id) === product.it);
     cartList.push(
       productList.find(
-        (product) =>parseInt(e.currentTarget.id) === product.id
+        (product) => parseInt(e.currentTarget.id) === product.id
       )
     );
+    setCartProductsNum();
     alert(`"Prodotto aggiunto al carrello", numero prodotti: $(cartList.length)`);
+    localStorage.setItem("totCartitems", cartList.length);
   });
 }
 
@@ -69,16 +74,15 @@ function createText(parent, productTitle, textPrice) {
 //     renderProducts();
 //   });
 
-let products = [];
 
 function renderProducts(listItem) {
   listItem.map((product) => {
-    createProduct(wrapperProducts, product.image, product.title, product.price);
+    createProduct(wrapperProducts, product.image, product.title, product.price, product.id);
   });
 }
 
 
-const getProductsList = async() => {
+const getProductsList = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
   productList = data;
@@ -86,14 +90,21 @@ const getProductsList = async() => {
   return renderProducts(data);
 };
 
+let productList = [];
 const wrapperProducts = document.querySelector(".wrapper__products");
-const cartBtn = document.querySelector(".cartBtn")
 
-const cartList= [];
-let productList=[];
 
+//Parte inerente alla logica del carrello
+let cartList= [];
+const cartBtn = document.querySelector(".cartBtn");
+const cartProductsNum = document.querySelector(".cartProductsNum");
+const clearCartBtn = document.querySelector(".clearCart");
+
+//Flusso generale
+cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
 getProductsList();
 
-// // cartBtn.addEventListener("click", () =>{
-//   console.log(cartList);
-// });
+clearCartBtn.addEventListener("click", () => {
+  cartList.length = 0;
+  setCartProductsNum();
+});
