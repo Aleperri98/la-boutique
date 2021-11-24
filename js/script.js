@@ -102,12 +102,14 @@ const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 
 //Flusso generale
-if (localStorageTot > 0) {
-  cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
-} else {
-  cartProductsNum.textContent = `Carrello vuoto`;
-}
-// cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
+// if (localStorageTot > 0) {
+//   cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
+// } else {
+//   cartProductsNum.textContent = `Carrello vuoto`;
+// }
+
+localStorageTot > 0 ? cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}` : cartProductsNum.textContent = `Carrello vuoto`;
+
 
 getProductsList();
 
