@@ -1,6 +1,4 @@
 // import { products } from "./products.js";   <== importare la lista prodotti in modo locale
-
-
 //SLIDE SHOW HERO
 const slide = document.querySelector(".overlay");
 
@@ -24,15 +22,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 //
-
-function createProduct(parent, imgUrl, productTitle, textPrice) {
+function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   const product = document.createElement("div");
   product.className = "product";
+  product.setAttribute("id", idProduct);
 
   createImg(product, imgUrl, productTitle);
   createText(product, productTitle, textPrice);
   parent.appendChild(product);
+
+  product.addEventListener("click", (e) => {
+    // console.log(parseInt(e.currentTarget));
+    // productList.find((product) => parseInt(e.currenttarget.id) === product.it);
+    cartList.push(
+      productList.find(
+        (product) =>parseInt(e.currentTarget.id) === product.id
+      )
+    );
+    alert(`"Prodotto aggiunto al carrello", numero prodotti: $(cartList.length)`);
+  });
 }
+
 
 function createImg(parent, imgUrl, productTitle) {
   const image = document.createElement("img");
@@ -60,7 +70,6 @@ function createText(parent, productTitle, textPrice) {
 //   });
 
 let products = [];
-const wrapperProducts = document.querySelector(".wrapper__products");
 
 function renderProducts(listItem) {
   listItem.map((product) => {
@@ -72,9 +81,17 @@ function renderProducts(listItem) {
 const getProductsList = async() => {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
+  productList = data;
   
   return renderProducts(data);
 };
 
+const wrapperProducts = document.querySelector(".wrapper__products");
+const cartBtn = document.querySelector(".cartBtn")
+
+const cartList= [];
+let productList=[];
+
 getProductsList();
 
+// cartBtn.addEventListener("click", )
