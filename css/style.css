@@ -98,6 +98,25 @@ strong {
   font-size: 1.5rem;
 }
 
+.modal {
+    position: fixed;
+    width: 200px;
+    height: auto;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: rgb(186, 245, 170);
+    border: 2px;
+    top: 50px;
+    left: 1270px;
+    z-index: 4;
+
+}
+
+
 .wrapper__titles {
   display: flex;
   justify-content: center;

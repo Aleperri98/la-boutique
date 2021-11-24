@@ -26,6 +26,20 @@ function setCartProductsNum() {
   cartProductsNum.textContent = `Numero prodotti: ${cartList.length}`;
 }
 
+// MODALE AGGIUNZIONE AL CARRELLO
+const modal = document.querySelector(".modal");
+const numberProduct = document.querySelector("#numberProduct");
+
+function showModal() {
+  modal.style.display = 'block';
+    numberProduct.textContent=`Numero prodotti: ${cartList.length}`;
+  setTimeout(function(){
+    modal.style.display = 'none';
+}, 1000); {once:true}
+}
+
+
+//FUNZIONE GLOBALE CHE CREA I PRODOTTI
 function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   const product = document.createElement("div");
   product.className = "product";
@@ -42,7 +56,7 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
       )
     );
     setCartProductsNum();
-    alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
+    showModal();
     localStorage.setItem("totCartitems", cartList.length);
   });
 }
