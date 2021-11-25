@@ -107,4 +107,3 @@ clearCartBtn.addEventListener("click", () => {
   setCartProductsNum();
 });
 
-
