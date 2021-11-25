@@ -166,3 +166,21 @@ strong {
 .product p {
   align-self: flex-end;
 }
+
+.review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  line-height: 5px;
+  padding: 5px;
+  width: 50%;
+  text-align: left;
+  margin-left: 30px;
+  border: 2px dashed lightgrey;
+  border-radius: 15px;
+}
+
+.review h1 {
+  font-size: 25px;
+}
