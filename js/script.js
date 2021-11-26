@@ -111,4 +111,4 @@ clearCartBtn.addEventListener("click", () => {
 
 
 
-export {productsList, renderProducts};
+export {productsList, renderProducts, wrapperProducts};

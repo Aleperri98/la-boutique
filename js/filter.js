@@ -1,11 +1,12 @@
-import {productsList, renderProducts} from "./script.js"
+import {productsList, renderProducts, wrapperProducts} from "./script.js"
 
 const lowpriceBtn = document.querySelector("#lowpriceBtn");
 const highpriceBtn = document.querySelector("#highpriceBtn");
 const alphaBtn = document.querySelector("#alphaBtn");
 
-function removeDuplicates(array) {
-    
+function removeDuplicates() {
+    document.querySelectorAll(".product")
+    .forEach((product)=> wrapperProducts.removeChild(product));
 }
 
 function sortAbc() {
@@ -20,7 +21,7 @@ function sortAbc() {
     }
     return 0;
    });
-   removeDuplicates(sortItem);
+   removeDuplicates();
    renderProducts(sortItem);
 }
 
@@ -28,6 +29,7 @@ function sortAbc() {
 
 function sortLowPrice() {
     productsList.sort((a, b) => a.price - b.price);
+    removeDuplicates();
     renderProducts(productsList);
 };
 
@@ -35,6 +37,7 @@ function sortLowPrice() {
 
 function sortHighPrice() {
     productsList.sort((a, b)=>b.price - a.price);
+    removeDuplicates();
     renderProducts(productsList);
 };
 
