@@ -107,3 +107,8 @@ clearCartBtn.addEventListener("click", () => {
   setCartProductsNum();
 });
 
+
+
+
+
+export {productsList, renderProducts};
