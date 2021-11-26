@@ -108,3 +108,7 @@ clearCartBtn.addEventListener("click", () => {
 });
 
 
+
+
+
+export {productsList, renderProducts, wrapperProducts};

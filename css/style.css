@@ -116,6 +116,30 @@ strong {
 
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-left: 20px;
+
+  width: 500px;
+}
+
+#lowpriceBtn, #highpriceBtn, #alphaBtn {
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid lightgrey;
+  cursor: pointer;
+}
+
+#lowpriceBtn:hover, #highpriceBtn:hover, #alphaBtn:hover{
+  background-color: grey;
+  border: 2px solid white;
+  transform: scale(0.9);
+}
+
 
 .wrapper__titles {
   display: flex;
